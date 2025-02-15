@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SONDER</title>
+  <style>
+    :root {
+      --bg-color: #0504e4;
+      --btn-bg: #fff;
+      --btn-border: #fff;
+      --btn-hover: #e6e6e6;
+      --btn-active-bg: #0504e4;
+      --btn-active-color: #fff;
+      --text-color: #fff;
+      --accent-color: #ffd700;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --social-btn-size: 50px;
+      --container-width: 90%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0 0 20px;
+      color: var(--text-color);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    #header {
+      position: relative;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #logo {
+      display: block;
+      margin: 40px auto 20px;
+      max-width: 60%;
+      height: auto;
+    }
+
+    #schedule-container {
+      position: absolute;
+      top: 20px;
+      right: calc((100vw - var(--container-width)) / 2);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #schedule-container img {
+      width: 24px;
+      height: 24px;
+    }
+
+    #social-container {
+      max-width: var(--container-width);
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    #social-icons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .social-item a {
+      display: block;
+      width: var(--social-btn-size);
+      height: var(--social-btn-size);
+      transition: transform 0.3s ease;
+    }
+
+    .social-item a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+.social-label {
+    font-size: 16px;
+    color: var(--text-color); /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    margin-top: 5px; /* Отступ сверху для текста */
+    display: block; /* Делаем текст блочным элементом для кликабельной области */
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+    line-height: 50px; /* Устанавливаем высоту строки равной высоте логотипов */
+}
+
+
+
+.social-label:hover {
+    text-decoration: underline; /* Добавляем подчеркивание при наведении */
+    cursor: pointer; /* Указываем, что это кликабельный элемент */
+}
+
+    #social-icons-mobile {
+      display: none;
+    }
+
+    #social-whatsapp-label {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    #language-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: var(--container-width);
+      gap: 10px;
+    }
+
+/* Десктопная версия */
+.lang-btn {
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 10px 20px; /* Отступы для десктопной версии */
+    font-size: 16px; /* Размер шрифта для десктопной версии */
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Мобильная версия */
+@media (max-width: 600px) {
+    .lang-btn {
+        padding: 5px 10px; /* Уменьшаем отступы для мобильной версии */
+        font-size: 14px; /* Уменьшаем размер шрифта для мобильной версии */
+    }
+}
+
+    .lang-btn:hover {
+      background-color: var(--btn-hover);
+      transform: scale(1.03);
+    }
+
+    .lang-btn.active {
+      background-color: var(--btn-active-bg);
+      color: var(--btn-active-color);
+    }
+
+    #image-container {
+      display: block;
+      margin: 20px auto;
+      max-width: var(--container-width);
+      padding: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      background: #fff;
+    }
+
+    #image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    #contacts {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      max-width: var(--container-width);
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-color); /* Устанавливаем цвет текста ссылок в белый */
+    }
+
+    #contacts a {
+        color: var(--text-color); /* Устанавливаем цвет текста ссылок в белый */
+        text-decoration: none; /* Убираем подчеркивание */
+    }
+
+    #contacts a:hover {
+        text-decoration: underline; /* Добавляем подчеркивание при наведении */
+        cursor: pointer; /* Указываем, что это кликабельный элемент */
+    }
+
+    /* Десктопная версия */
+    @media (min-width: 601px) {
+      #schedule-container {
+        display: flex; /* Отображаем расписание на десктопе */
+      }
+
+      #mobile-schedule {
+        display: none; /* Скрываем мобильное расписание на десктопе */
+      }
+    }
+
+    /* Мобильная адаптация */
+    @media (max-width: 600px) {
+      #schedule-container {
+        display: none; /* Скрываем расписание на мобильной версии */
+      }
+
+#mobile-schedule {
+    display: flex; /* Отображаем мобильное расписание */
+    margin: 10px auto; /* Уменьшаем отступы сверху и снизу, центрируем по оси X */
+    font-size: 16px; /* Уменьшаем размер шрифта */
+    align-items: center;
+    gap: 8px;
+    justify-content: center; /* Центрируем содержимое по оси X */
+}
+
+#mobile-schedule img {
+    width: 20px; /* Уменьшаем размер изображения */
+    height: 20px; /* Уменьшаем размер изображения */
+}
+
+
+      #logo {
+        margin: 10px auto 20px;
+        max-width: 80%;
+      }
+
+      #social-icons-container {
+        display: none;
+      }
+
+      #social-icons-mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      #social-icons-mobile a {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+      }
+
+      #social-icons-mobile a:hover {
+        transform: scale(1.1);
+      }
+
+      #social-icons-mobile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #instagram-btn-mobile { order: 1; }
+      #wolt-btn-mobile { order: 2; }
+      #whatsapp-btn-mobile { order: 3; }
+
+      #social-whatsapp-label {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img id="logo" src="Sonder_Logo.svg" alt="Логотип ресторана">
+  
+  <!-- Расписание для десктопной версии -->
+  <div id="schedule-container">
+    <img src="clock.png" alt="Время работы">
+    <span data-key="schedule-label">Svaki dan 9-23</span>
+  </div>
+
+  <div id="social-container">
+<div id="social-icons-container">
+    <!-- WhatsApp -->
+    <div class="social-item" id="social-whatsapp">
+        <a id="whatsapp-btn" href="https://wa.me/381631811931" target="_blank">
+            <img src="whatsapp.svg" alt="WhatsApp">
+        </a>
+        <a class="social-label" data-key="whatsapp-label" href="https://wa.me/381631811931" target="_blank">Table reservation via WhatsApp</a>
+    </div>
+    <!-- Wolt -->
+    <div class="social-item" id="social-wolt">
+        <a id="wolt-btn" href="https://wolt.com/sr/srb/belgrade/venue/sonder-coffee-belgrade" target="_blank">
+            <img src="wolt.svg" alt="Wolt">
+        </a>
+        <a class="social-label" data-key="wolt-label" href="https://wolt.com/sr/srb/belgrade/venue/sonder-coffee-belgrade" target="_blank">Доставка Wolt</a>
+    </div>
+    <!-- Instagram -->
+    <div class="social-item" id="social-instagram">
+        <a id="instagram-btn" href="https://www.instagram.com/sonder.belgrade/" target="_blank">
+            <img src="instagram.svg" alt="Instagram">
+        </a>
+        <a class="social-label" data-key="instagram-label" href="https://www.instagram.com/sonder.belgrade/" target="_blank">Наш Instagram</a>
+    </div>
+</div>
+
+    <div id="social-icons-mobile">
+      <a id="instagram-btn-mobile" href="https://www.instagram.com
+/sonder.belgrade/" target="_blank">
+        <img src="instagram.svg" alt="Instagram">
+      </a>
+      <a id="wolt-btn-mobile" href="https://wolt.com/sr/srb/belgrade/venue/sonder-coffee-belgrade" target="_blank">
+        <img src="wolt.svg" alt="Wolt">
+      </a>
+      <a id="whatsapp-btn-mobile" href="https://wa.me/381631811931" target="_blank">
+        <img src="whatsapp.svg" alt="WhatsApp">
+      </a>
+    </div>
+
+    <div id="social-whatsapp-label">
+      <span data-key="whatsapp-label">Table reservation via WhatsApp</span>
+    </div>
+  </div>
+  
+  <div id="language-switcher">
+    <button class="lang-btn" id="ru" onclick="changeLanguage('ru')" aria-pressed="false">Русский</button>
+    <button class="lang-btn" id="sr" onclick="changeLanguage('sr')" aria-pressed="false">Srpski</button>
+    <button class="lang-btn" id="en" onclick="changeLanguage('en')" aria-pressed="false">English</button>
+  </div>
+  
+  <div id="image-container">
+    <img id="menu-image" src="srb.png" alt="Меню ресторана">
+  </div>
+  
+<div id="contacts">
+    <p>
+      Sonder coffee roastery & cafe<br>
+      <a href="https://maps.app.goo.gl/G1WoK5QxsjpRiJnq6" target="_blank">Baba Višnjina 35, Belgrade 11000</a><br>
+      <a href="https://maps.app.goo.gl/GyvpVZrdrQFaNZXp9" target="_blank">Knez-Miletina 25-27, Belgrade 101203</a>
+    </p>
+</div>
+
+  <!-- Расписание для мобильной версии (перемещено в самый низ) -->
+  <div id="mobile-schedule">
+    <img src="clock.png" alt="Время работы">
+    <span data-key="schedule-label">Svaki dan 9-23</span>
+  </div>
+
+  <div style="height: 20px;"></div>
+  
+  <script>
+    const images = {
+      sr: 'srb.png',
+      en: 'eng.png',
+      ru: 'rus.png'
+    };
+    
+    const scheduleTranslations = {
+      sr: "Svaki dan 9-23",
+      en: "Every day 9-23",
+      ru: "Каждый день 9-23"
+    };
+    
+    const socialTranslations = {
+      sr: {
+        whatsapp: "Rezervišite sto putem WhatsApp-a",
+        wolt: "Wolt dostava",
+        instagram: "Naš Instagram"
+      },
+      en: {
+        whatsapp: "Table reservation via WhatsApp",
+        wolt: "Wolt delivery",
+        instagram: "Our Instagram"
+      },
+      ru: {
+        whatsapp: "Заказ столика через WhatsApp",
+        wolt: "Доставка Wolt",
+        instagram: "Наш Instagram"
+      }
+    };
+    
+    const woltLinks = {
+      sr: "https://wolt.com/sr/srb/belgrade/venue/sonder-coffee-belgrade",
+      en: "https://wolt.com/en/srb/belgrade/venue/sonder-coffee-belgrade",
+      ru: "https://wolt.com/ru/srb/belgrade/venue/sonder-coffee-belgrade"
+    };
+    
+    const preloadedImages = {};
+    Object.keys(images).forEach(lang => {
+      const img = new Image();
+      img.src = images[lang];
+      preloadedImages[lang] = img;
+    });
+    
+function changeLanguage(lang) {
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.classList.remove('active');
+        button.setAttribute('aria-pressed', 'false');
+    });
+    const activeButton = document.getElementById(lang);
+    activeButton.classList.add('active');
+    activeButton.setAttribute('aria-pressed', 'true');
+    
+    const menuImage = document.getElementById('menu-image');
+    menuImage.src = preloadedImages[lang].src;
+    
+    const scheduleSpan = document.querySelector('#schedule-container span[data-key="schedule-label"]');
+    scheduleSpan.textContent = scheduleTranslations[lang];
+    
+    const mobileScheduleSpan = document.querySelector('#mobile-schedule span[data-key="schedule-label"]');
+    mobileScheduleSpan.textContent = scheduleTranslations[lang];
+    
+    // Обновление текста в социальных кнопках
+    document.querySelector('#social-whatsapp .social-label').textContent = socialTranslations[lang].whatsapp;
+    document.querySelector('#social-wolt .social-label').textContent = socialTranslations[lang].wolt;
+    document.querySelector('#social-instagram .social-label').textContent = socialTranslations[lang].instagram;
+
+    const mobileWSLabel = document.querySelector('#social-whatsapp-label span[data-key="whatsapp-label"]');
+    mobileWSLabel.textContent = socialTranslations[lang].whatsapp;
+    
+    document.getElementById('wolt-btn').href = woltLinks[lang];
+    document.getElementById('wolt-btn-mobile').href = woltLinks[lang];
+}
+
+    
+    function setButtonWidths() {
+      const buttons = document.querySelectorAll('.lang-btn');
+      let maxWidth = 0;
+      buttons.forEach(button => {
+        let width = button.offsetWidth;
+        if (width > maxWidth) maxWidth = width;
+      });
+      buttons.forEach(button => {
+        button.style.width = maxWidth + 'px';
+      });
+    }
+    
+    window.addEventListener('load', () => {
+      setButtonWidths();
+      changeLanguage('sr');
+    });
+  </script>
+</body>
+</html>
+
